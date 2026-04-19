@@ -34,6 +34,19 @@ nice!nano v2 / SuperMini NRF52840
 - **BTN**: Optional momentary button for scroll mode (internal pull-up, active low)
 - **VCC**: Must be the regulated 3.3V pin, not RAW (unregulated battery)
 
+### Alternative wiring (tested)
+
+The following pinout was also tested and confirmed working — used by the [kb38-cirque-zmk](https://github.com/nsinotov/kb38-cirque-zmk) keyboard:
+
+| Signal | Pin | GPIO |
+|--------|-----|------|
+| SDA | D18 | P1.15 |
+| SCL | D19 | P0.02 |
+| DR | D2 | P0.17 |
+
+To use this pinout, update the `pinctrl` and `data-ready-gpios` in the overlay.
+**Note:** D20 (P0.29) cannot be used for I2C — the nice!nano battery voltage divider on this pin interferes with I2C communication.
+
 ## Issues Found During Debugging
 
 These issues were discovered while bringing up the Cirque trackpad and may help others:

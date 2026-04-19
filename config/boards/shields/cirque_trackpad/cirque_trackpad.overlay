@@ -28,6 +28,13 @@
             , <INPUT_REL_Y INPUT_REL_WHEEL>;
     };
 
+    scroll_scaler: scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+    };
+
     glidepoint_listener: glidepoint_listener {
         compatible = "zmk,input-listener";
         device = <&glidepoint>;
@@ -35,7 +42,7 @@
 
         scroll_layer {
             layers = <1>;
-            input-processors = <&xy_transform (INPUT_TRANSFORM_Y_INVERT) &scroll_mapper>;
+            input-processors = <&xy_transform (INPUT_TRANSFORM_Y_INVERT) &scroll_mapper &scroll_scaler 1 10>;
         };
     };
 };
@@ -50,6 +57,7 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
         };
     };
 

@@ -30,8 +30,9 @@ Cirque trackpads do not have internal pull-ups.
 
 ## Pin Choice Rationale
 
-- D2/D3 (P0.17/P0.20): Standard accessible pins on the left column of the pro micro header. Using TWIM0 (I2C0) peripheral — the primary I2C hardware block on nRF52840.
+- D2/D3 (P0.17/P0.20): Standard accessible pins on the left column of the pro micro header. Uses TWIM1 (I2C1) peripheral — TWIM0/SPIM0 share hardware on nRF52840.
 - D7 (P0.11): Data-ready interrupt pin. Any GPIO works for interrupts on nRF52840; D7 is on the same side of the board for clean wiring.
+- D20 (P0.29) is **not usable** for I2C — nice!nano battery voltage divider interferes.
 - Using I2C (not SPI) because it requires fewer wires (4 vs 6) and is the standard approach for Cirque in ZMK builds.
 
 ## Build
