@@ -1,0 +1,16 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&mo 1>;
+        };
+
+        scroll_layer {
+            bindings = <&trans>;
+        };
+    };
+};

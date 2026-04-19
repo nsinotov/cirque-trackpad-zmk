@@ -1,0 +1,5 @@
+---
+include:
+  - board: nice_nano//zmk
+    shield: cirque_trackpad
+    snippet: zmk-usb-logging

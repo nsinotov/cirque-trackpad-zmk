@@ -1,0 +1,5 @@
+firmware/
+.west/
+build/
+.history/
+.DS_Store

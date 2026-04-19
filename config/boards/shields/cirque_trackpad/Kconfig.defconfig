@@ -1,0 +1,9 @@
+if SHIELD_CIRQUE_TRACKPAD
+
+config ZMK_KEYBOARD_NAME
+    default "Cirque Trackpad"
+
+config ZMK_POINTING
+    default y
+
+endif
