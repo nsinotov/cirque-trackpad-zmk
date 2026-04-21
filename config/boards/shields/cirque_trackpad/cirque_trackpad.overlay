@@ -33,6 +33,8 @@
         #input-processor-cells = <2>;
         type = <INPUT_EV_REL>;
         codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        /* Accumulate fractional deltas instead of truncating to zero — without this, slow finger movements produce no scroll at all */
+        track-remainders;
     };
 
     glidepoint_listener: glidepoint_listener {
@@ -42,7 +44,7 @@
 
         scroll_layer {
             layers = <1>;
-            input-processors = <&xy_transform (INPUT_TRANSFORM_Y_INVERT) &scroll_mapper &scroll_scaler 1 10>;
+            input-processors = <&scroll_mapper &scroll_scaler 1 20>;
         };
     };
 };
@@ -81,7 +83,7 @@
         compatible = "cirque,pinnacle";
         reg = <0x2a>;
         status = "okay";
-        sensitivity = "2x";
+        sensitivity = "1x";
         sleep-mode-enable;
         data-ready-gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>;
     };
